@@ -14,11 +14,7 @@ localhost:3000/vmsdev/rrn/searchbycdt?page=1&size=5
 
 #### Result
 
-#### Example
-```json
-curl -u 7:znn36aVeGrtJ2K9Vev6 https://api.bukalapak.com/v2/products/xxx/push.json -X PATCH -d '{"force": "0"}' -H "Content-Type: application/json"
-```
-```json
+
 {
     "code": 0,
     "message": "ok",
