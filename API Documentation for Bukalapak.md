@@ -13,7 +13,9 @@ localhost:3000/vmsdev/rrn/searchbycdt?page=1&size=5
 | retur_request_number   | required	  	||
 
 #### Result
+```json
 
+```
 
 {
     "code": 0,
