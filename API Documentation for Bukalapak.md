@@ -14,9 +14,6 @@ localhost:3000/vmsdev/rrn/searchbycdt?page=1&size=5
 
 #### Result
 ```json
-
-```
-
 {
     "code": 0,
     "message": "ok",
