@@ -163,11 +163,11 @@ localhost:3000/vmsdev/rar/getRarAll?receiving_advice_number=1115000068
 
 
 
-### 2. Bulk Set Unavailable
+### 2. Proforma Invoice Response
 
 #### HTTP Request
 ```json
-PATCH https://api.bukalapak.com/v2/products/bulk_set_unavailable.json
+localhost:3000/vmsdev/pfir/getPfirAll
 ```
 #### Parameters
 
@@ -191,10 +191,26 @@ curl -u 7:znn36aVeGrtJ2K9Vev6 https://api.bukalapak.com/v2/products/bulk_set_una
 ```
 ```json
 {
-	"status":"OK",
-	"message":"Barang berhasil di-set unavailable semuanya",
-	"success":["s","u","t","a","b","c"],
-	"fail":[]
+    "code": 0,
+    "result": {
+        "items": [
+            {
+                "id": "94",
+                "revision": "0",
+                "date_updated": "2016-01-29T00:06:49.000Z",
+                "status": "CANCELLED",
+                "ra": {
+                    "purchase_order": "TRI1511137638173",
+                    "rapo": {
+                        "supplier_name": "JKT (SWALLOW) SURYA MAS MENTARI,PT.",
+                        "store_code": "038",
+                        "delivery_to": "Kramatjati Indah"
+                    }
+                }
+            },
+	       },
+    "message": "ok",
+    "type": "success"
 }
 ```
 
