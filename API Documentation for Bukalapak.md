@@ -79,49 +79,85 @@ localhost:3000/vmsdev/rrn/searchbycdt?page=1&size=5
     "limit": 5
 }
 ```
-### 1. Bulk Push
+### 1. Receiving Advice Response
 
 #### HTTP Request
 ```json
-PATCH https://api.bukalapak.com/v2/products/bulk_push.json
+localhost:3000/vmsdev/rar/getRarAll?receiving_advice_number=1115000068
 ```
 #### Parameters
 
 | Parameters    |               | Description  |
 | ------------- |:-------------:| -------------|
-| products_id   | required	  	| `id` dari produk-produk yang ingin dipush (base36) berupa array 	   |
-| force         | optional      |   Jika bernilai "1", akan menggunakan saldo BukaDompet jika Paket Push tidak mencukupi untuk melakukan push. Jika bernilai "0", tidak akan menggunakan saldo BukaDompet jika Paket Push tidak mencukupi untuk melakukan push.  	   |
+| receiving_advice_number  | required	  	| 	   |
 
 #### Result
 
-| Parameters    |  Description  |
-| ------------- |:--------------|
-|status| `OK` Jika ada satu/lebih produk yang berhasil di-push. `ERROR` Jika tidak ada produk yang berhasil di-push|
-|can_push| Bernilai `true` jika `user` bersangkutan masih dapat melakukan push, dan `false` jika sebaliknya |
-|remaining_push| Sisa paket push yang masih tersedia|
-|message| Pesan response dari server|
-|push_price| Harga untuk melakukan satu kali push|
-|deposit| Saldo Bukadompet user|
-|success| Array of `id` produk yang berhasil di-push|
-|fail| Array of `id` produk yang gagal di-push|
-
-#### Example
-```json
-curl -u 7:znn36aVeGrtJ2K9Vev6 https://api.bukalapak.com/v2/products/bulk_push.json 
-	-X PATCH 
-	-d '{"products_id":["s","u","t","a","b","c"], "force":"0"}' 
-	-H "Content-Type: application/json"
-```
 ```json
 {
-	"status":"OK",
-	"can_push":true,
-	"remaining_push":0,
-	"message":"Barang berhasil di-push semuanya",
-	"deposit":0,
-	"push_price":500,
-	"success":["s","u","t","a","b","c"],
-	"fail":[]
+    "code": 0,
+    "result": {
+        "items": [
+            {
+                "id": "2",
+                "purchase_order": "TRI1412233126683",
+                "receiving_advice_number": "1115000068",
+                "receiving_advice_date": "2023-05-25T00:51:33.915Z",
+                "status": "SUPPLIER_DRAFT",
+                "po": {
+                    "supplier_name": "JKT (RINSO) UNILEVER INDONESIA TBK"
+                },
+                "store": {
+                    "store_id": "428",
+                    "name": "Bekasi Harapan"
+                }
+            },
+            {
+                "id": "1",
+                "purchase_order": "TRI1412233126683",
+                "receiving_advice_number": "1115000068",
+                "receiving_advice_date": "2023-05-25T00:37:41.408Z",
+                "status": "SUPPLIER_DRAFT",
+                "po": {
+                    "supplier_name": "JKT (RINSO) UNILEVER INDONESIA TBK"
+                },
+                "store": {
+                    "store_id": "428",
+                    "name": "Bekasi Harapan"
+                }
+            },
+            {
+                "id": "3",
+                "purchase_order": "TRI1412233126683",
+                "receiving_advice_number": "1115000068",
+                "receiving_advice_date": "2023-05-25T00:53:51.896Z",
+                "status": "SUPPLIER_DRAFT",
+                "po": {
+                    "supplier_name": "JKT (RINSO) UNILEVER INDONESIA TBK"
+                },
+                "store": {
+                    "store_id": "428",
+                    "name": "Bekasi Harapan"
+                }
+            },
+            {
+                "id": "4",
+                "purchase_order": "TRI1412233126683",
+                "receiving_advice_number": "1115000068",
+                "receiving_advice_date": "2023-05-25T18:52:43.807Z",
+                "status": "SUPPLIER_DRAFT",
+                "po": {
+                    "supplier_name": "JKT (RINSO) UNILEVER INDONESIA TBK"
+                },
+                "store": {
+                    "store_id": "428",
+                    "name": "Bekasi Harapan"
+                }
+            }
+        ]
+    },
+    "message": "ok",
+    "type": "success"
 }
 ```
 
