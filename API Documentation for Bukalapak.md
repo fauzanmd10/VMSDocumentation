@@ -1,28 +1,18 @@
-# Dokumentasi API dan contoh
+# Dokumentasi API VMS dan contoh
 
-### 0.  Push Product (Add force as optional parameter )
+### 0.  Retur
 
 #### HTTP Request
 ```json
-PATCH https://api.bukalapak.com/v2/products/:id/push.json
+localhost:3000/vmsdev/rrn/searchbycdt?page=1&size=5
 ```
 #### Parameters
 
 | Parameters    |               | Description  |
 | ------------- |:-------------:| -------------|
-| id   | required	  	| `id` dari produk yang ingin dipush (base36)|
-| force         | optional      |   Jika bernilai "1", akan menggunakan saldo BukaDompet jika Paket Push tidak mencukupi untuk melakukan push. Jika bernilai "0", tidak akan menggunakan saldo BukaDompet jika Paket Push tidak mencukupi untuk melakukan push.  	   |
+| retur_request_number   | required	  	||
 
 #### Result
-
-| Parameters    |  Description  |
-| ------------- |:--------------|
-|status| `OK` Jika produk berhasil di-push. `ERROR` Jika tidak berhasil di-push|
-|can_push| Bernilai `true` jika `user` bersangkutan masih dapat melakukan push, dan `false` jika sebaliknya |
-|remaining_push| Sisa paket push yang masih tersedia|
-|push_price| Harga untuk melakukan satu kali push|
-|deposit| Saldo Bukadompet user|
-|message| Pesan response dari server|
 
 #### Example
 ```json
@@ -30,12 +20,68 @@ curl -u 7:znn36aVeGrtJ2K9Vev6 https://api.bukalapak.com/v2/products/xxx/push.jso
 ```
 ```json
 {
-	"status":"OK",
-	"can_push":true,
-	"remaining_push":0,
-	"deposit":0,
-	"push_price":500,
-	"message":"Barang telah berhasil di-push"
+    "code": 0,
+    "message": "ok",
+    "type": "success",
+    "result": [
+        {
+            "return_request_number": "5218002886",
+            "request_created_date": "2018-04-29T05:00:23.900Z",
+            "status": "APPROVED",
+            "store_code": "019",
+            "type": "APPROVED_RQ",
+            "read_date": "2018-05-04T03:49:48.882Z",
+            "read_by": "0215",
+            "action_date": "2018-05-04T03:49:48.687Z",
+            "action_by": "0215"
+        },
+        {
+            "return_request_number": "5218002886",
+            "request_created_date": "2018-05-02T11:07:31.396Z",
+            "status": "NEW",
+            "store_code": "104",
+            "type": "INCOMING_RQ",
+            "read_date": null,
+            "read_by": null,
+            "action_date": "2018-05-02T11:07:31.396Z",
+            "action_by": "SYSTEM"
+        },
+        {
+            "return_request_number": "5218002886",
+            "request_created_date": "2018-04-29T05:00:23.900Z",
+            "status": "NEW",
+            "store_code": "019",
+            "type": "INCOMING_RQ",
+            "read_date": null,
+            "read_by": null,
+            "action_date": "2018-04-29T05:00:23.900Z",
+            "action_by": "SYSTEM"
+        },
+        {
+            "return_request_number": "5218002886",
+            "request_created_date": "2018-04-29T05:00:23.900Z",
+            "status": "RQ_AWAITING_ACTION",
+            "store_code": "019",
+            "type": "INCOMING_RQ",
+            "read_date": "2018-05-04T03:44:40.906Z",
+            "read_by": "0215",
+            "action_date": null,
+            "action_by": null
+        },
+        {
+            "return_request_number": "5218002886",
+            "request_created_date": "2018-04-25T03:00:25.163Z",
+            "status": "NEW",
+            "store_code": "029",
+            "type": "INCOMING_RQ",
+            "read_date": null,
+            "read_by": null,
+            "action_date": "2018-04-25T03:00:25.163Z",
+            "action_by": "SYSTEM"
+        }
+    ],
+    "page": "1",
+    "limit": 5
 }
 ```
 ### 1. Bulk Push
